@@ -33,12 +33,12 @@ RUN set -eux; \
         "valk-protobuf 0.2.1" \
         "valk-sql 0.5.0"; do \
         set -- $spec; repo="$1"; ver="$2"; \
-        mkdir -p "vendor/github-ctxcode-${repo}/${ver}"; \
-        curl -fsSL "https://github.com/ctxcode/${repo}/archive/refs/tags/${ver}.tar.gz" \
-            | tar -xz --strip-components=1 -C "vendor/github-ctxcode-${repo}/${ver}"; \
+        mkdir -p "vendor/github-zikue-${repo}/${ver}"; \
+        curl -fsSL "https://github.com/zikue/${repo}/archive/refs/tags/${ver}.tar.gz" \
+            | tar -xz --strip-components=1 -C "vendor/github-zikue-${repo}/${ver}"; \
     done; \
-    mkdir -p vendor/github-ctxcode-valk-postgres/0.9.2/vendor; \
-    ln -s /app/vendor/github-ctxcode-valk-sql vendor/github-ctxcode-valk-postgres/0.9.2/vendor/github-ctxcode-valk-sql
+    mkdir -p vendor/github-zikue-valk-postgres/0.9.2/vendor; \
+    ln -s /app/vendor/github-zikue-valk-sql vendor/github-zikue-valk-postgres/0.9.2/vendor/github-ctxcode-valk-sql
 RUN valk build src -o /server --release --static
 
 FROM ubuntu:24.04
